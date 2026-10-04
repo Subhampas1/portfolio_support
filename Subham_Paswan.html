@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Subham Paswan — Desktop Support Engineer portfolio">
+<title>Subham Paswan | Desktop Support Engineer</title>
+<style>
+:root{
+  --bg:#f5f5f7;--surface:rgba(255,255,255,.62);--surface2:rgba(255,255,255,.42);
+  --text:#1d1d1f;--muted:#6e6e73;--line:rgba(0,0,0,.10);
+  --blue:#0071e3;--blue2:#0077ed;--dark:#161617;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Inter,Segoe UI,sans-serif;line-height:1.45;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:
+radial-gradient(circle at 15% 10%,rgba(120,170,255,.22),transparent 32%),
+radial-gradient(circle at 85% 25%,rgba(190,140,255,.17),transparent 30%),
+linear-gradient(180deg,#fbfbfd 0%,#f5f5f7 45%,#f1f1f3 100%)}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,calc(100% - 42px));margin:auto}
+
+/* ===== PREMIUM FLOATING HEADER ===== */
+header{
+  position:fixed;
+  top:14px;
+  left:0;
+  right:0;
+  z-index:100;
+  background:transparent;
+  border:0;
+  pointer-events:none;
+}
+header .container{
+  width:min(1160px,calc(100% - 28px));
+}
+.nav{
+  height:58px;
+  padding:0 9px 0 17px;
+  border-radius:18px;
+  background:rgba(250,250,252,.72);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:
+    0 12px 38px rgba(0,0,0,.08),
+    inset 0 1px rgba(255,255,255,.95);
+  backdrop-filter:saturate(180%) blur(22px);
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  pointer-events:auto;
+  transition:all .3s ease;
+}
+.nav.scrolled{
+  background:rgba(250,250,252,.88);
+  box-shadow:0 15px 45px rgba(0,0,0,.12),inset 0 1px rgba(255,255,255,.98);
+  transform:translateY(-2px);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+.logo-mark{
+  width:30px;height:30px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  background:#1d1d1f;
+  color:#fff;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:-.04em;
+  box-shadow:0 5px 14px rgba(0,0,0,.15);
+}
+.logo-copy small{
+  display:block;
+  color:#8a8a90;
+  font-size:8px;
+  line-height:1;
+  margin-top:2px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  font-size:12px;
+  color:#66666b;
+}
+nav a{
+  position:relative;
+  padding:8px 11px;
+  border-radius:10px;
+  transition:color .2s ease,background .2s ease;
+}
+nav a:hover,
+nav a.active{
+  color:#1d1d1f;
+  background:rgba(0,0,0,.045);
+}
+nav a.active::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:3px;
+  width:3px;height:3px;
+  border-radius:50%;
+  background:#0071e3;
+  transform:translateX(-50%);
+}
+.header-availability{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-left:9px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:rgba(36,183,107,.075);
+  border:1px solid rgba(36,183,107,.12);
+  color:#26734b;
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.header-availability i{
+  width:6px;height:6px;border-radius:50%;
+  background:#24b76b;
+  box-shadow:0 0 0 4px rgba(36,183,107,.09);
+  animation:headerPulse 2s infinite;
+}
+.header-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left:6px;
+  padding:9px 14px;
+  border-radius:12px;
+  background:#1d1d1f;
+  color:#fff !important;
+  font-size:11px;
+  font-weight:650;
+  box-shadow:0 5px 14px rgba(0,0,0,.13);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.header-cta:hover{
+  background:#1d1d1f !important;
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+.header-cta svg{width:12px;height:12px}
+.mobile-menu{
+  display:none;
+  width:36px;height:36px;
+  border:0;border-radius:11px;
+  background:rgba(0,0,0,.05);
+  cursor:pointer;
+}
+.mobile-menu span,
+.mobile-menu span::before,
+.mobile-menu span::after{
+  content:"";display:block;width:15px;height:1.5px;
+  background:#333;border-radius:2px;transition:.25s;
+}
+.mobile-menu span::before{transform:translateY(-5px)}
+.mobile-menu span::after{transform:translateY(3.5px)}
+@keyframes headerPulse{50%{opacity:.35;transform:scale(.72)}}
+
+@media(max-width:900px){
+  nav,.header-availability{display:none}
+  .header-cta{margin-left:auto;margin-right:5px}
+  .mobile-menu{display:grid;place-items:center}
+  .mobile-nav{
+    display:none;
+    position:absolute;
+    top:67px;left:0;right:0;
+    padding:9px;
+    border-radius:18px;
+    background:rgba(250,250,252,.92);
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+    backdrop-filter:blur(22px);
+  }
+  .mobile-nav.open{display:grid}
+  .mobile-nav a{
+    padding:13px 14px;
+    border-radius:11px;
+    font-size:13px;
+    color:#555;
+  }
+  .mobile-nav a:hover{background:rgba(0,0,0,.045);color:#111}
+}
+/* Desktop: keep the mobile navigation completely out of the layout.
+   This also overrides .mobile-nav.open if the viewport is resized from mobile. */
+@media(min-width:901px){
+  #mobileNav{display:none}
+}
+
+@media(max-width:500px){
+  header{top:8px}
+  .nav{height:54px;padding-left:11px}
+  .logo-copy{display:none}
+  .header-cta{font-size:10px;padding:8px 11px}
+}
+
+header{position:sticky;top:0;z-index:50;background:rgba(250,250,252,.72);backdrop-filter:saturate(180%) blur(22px);-webkit-backdrop-filter:saturate(180%) blur(22px);border-bottom:1px solid rgba(0,0,0,.07)}
+.nav{height:52px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:17px;font-weight:650;letter-spacing:-.02em}
+nav{display:flex;gap:26px;font-size:13px;color:#424245}
+nav a:hover{color:#000}
+.hero{padding:145px 0 125px;text-align:center}
+.eyebrow{font-size:14px;font-weight:600;color:var(--blue);letter-spacing:-.01em;margin-bottom:14px}
+h1{font-size:clamp(52px,8vw,92px);line-height:.98;letter-spacing:-.065em;margin:0 auto 28px;font-weight:700}
+.hero p{font-size:21px;line-height:1.42;color:var(--muted);max-width:700px;margin:auto}
+.actions{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;font-size:15px;font-weight:500;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px rgba(255,255,255,.9),0 8px 25px rgba(0,0,0,.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:.25s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:inset 0 1px rgba(255,255,255,.95),0 12px 30px rgba(0,0,0,.10)}
+.btn.primary{background:rgba(0,113,227,.92);border-color:rgba(0,113,227,.55);color:#fff;box-shadow:inset 0 1px rgba(255,255,255,.3),0 10px 25px rgba(0,113,227,.18)}
+.profile-card{margin:70px auto 0;max-width:920px;min-height:280px;border-radius:30px;padding:38px;text-align:left;background:linear-gradient(135deg,rgba(255,255,255,.70),rgba(255,255,255,.30));border:1px solid rgba(255,255,255,.8);box-shadow:0 25px 70px rgba(0,0,0,.10),inset 0 1px rgba(255,255,255,.95);backdrop-filter:blur(28px) saturate(140%);-webkit-backdrop-filter:blur(28px) saturate(140%)}
+.status{display:inline-flex;align-items:center;gap:7px;color:#16834b;font-size:13px;font-weight:600}
+.status i{width:7px;height:7px;background:#24b76b;border-radius:50%;box-shadow:0 0 0 5px rgba(36,183,107,.10)}
+.profile-card h2{font-size:32px;letter-spacing:-.04em;margin:45px 0 2px}
+.profile-card p{font-size:16px;color:var(--muted);margin:0}
+.info{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+section{padding:105px 0;scroll-margin-top:70px}
+.section-head{text-align:center;margin:0 auto 50px;max-width:760px}
+h2{font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:-.055em;margin:0 0 16px}
+.section-head p{font-size:18px;color:var(--muted);margin:0}
+.about-grid,.project-grid,.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.9);border-radius:24px;padding:30px;box-shadow:0 12px 40px rgba(0,0,0,.055),inset 0 1px rgba(255,255,255,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.card h3{font-size:21px;letter-spacing:-.025em;margin:0 0 10px}
+.card p{color:var(--muted);margin:0;font-size:16px}
+.timeline{max-width:820px;margin:auto;padding-left:30px;border-left:1px solid #c9c9ce}
+.job{position:relative;padding-bottom:15px}
+.job:before{content:"";position:absolute;width:10px;height:10px;background:var(--blue);border-radius:50%;left:-35px;top:8px;box-shadow:0 0 0 6px #f5f5f7}
+.job h3{font-size:25px;letter-spacing:-.03em;margin:0}
+.job .meta{font-size:14px;color:var(--muted);margin:3px 0 18px}
+.job ul{margin:0;padding-left:20px;color:#515154}
+.job li{margin:10px 0}
+.skill{padding:24px;background:rgba(255,255,255,.52);border:1px solid rgba(255,255,255,.9);border-radius:20px;box-shadow:inset 0 1px rgba(255,255,255,.9);backdrop-filter:blur(16px)}
+.skill strong{display:block;font-size:17px;margin-bottom:6px}
+.skill span{font-size:14px;color:var(--muted)}
+.support{border-radius:34px;padding:55px;background:linear-gradient(135deg,#111112,#252527);color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.16)}
+.support .eyebrow{color:#67a8ff}
+.support h2{max-width:700px}
+.support>p{max-width:650px;color:#a1a1a6;font-size:18px}
+.ticket{margin-top:35px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:25px;backdrop-filter:blur(20px)}
+.ticket-top{display:flex;justify-content:space-between;color:#999; font-size:13px}
+.badge{color:#68d391;background:rgba(48,209,88,.12);border:1px solid rgba(48,209,88,.18);padding:4px 10px;border-radius:99px}
+.ticket h3{font-size:23px;margin:22px 0 5px}
+.ticket p{color:#a1a1a6}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.step{padding:17px;border-radius:15px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);color:#aaa;font-size:13px}
+.step b{display:block;color:#fff;margin-bottom:4px}
+.project .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
+.project h3{font-size:25px;margin:10px 0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.chip{font-size:12px;padding:6px 10px;border-radius:99px;background:rgba(0,113,227,.08);color:#245aa5}
+.contact{border-radius:34px;padding:65px;text-align:center;background:linear-gradient(135deg,#0071e3,#147ce5);color:#fff;box-shadow:0 30px 80px rgba(0,113,227,.18)}
+.contact .eyebrow{color:#dcecff}
+.contact h2{max-width:720px;margin:0 auto 15px}
+.contact p{max-width:620px;margin:auto;color:#dcecff;font-size:18px}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:28px}
+.contact-links a{padding:11px 17px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(12px);font-size:14px}
+footer{text-align:center;padding:45px 0;color:#86868b;font-size:13px}
+
+/* ===== HERO V2 — DESKTOP SUPPORT COMMAND CENTER ===== */
+.hero{
+  min-height:calc(100vh - 52px); padding:72px 0 78px; position:relative;
+  overflow:hidden; display:flex; align-items:center; text-align:left;
+}
+.hero::before{
+  content:""; position:absolute; width:900px;height:900px; right:-280px;top:-300px;
+  background:radial-gradient(circle,rgba(0,113,227,.16),transparent 62%);
+  animation:heroOrb 8s ease-in-out infinite; pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(rgba(0,0,0,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.025) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(90deg,black,transparent 80%);
+}
+.hero-grid{
+  width:min(1160px,calc(100% - 42px)); margin:auto; position:relative;z-index:2;
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(480px,1.08fr);
+  gap:70px;align-items:center;
+}
+.hero-copy{max-width:570px}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border-radius:99px;
+  background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 25px rgba(0,0,0,.05);font-size:11px;font-weight:700;
+  letter-spacing:.08em;color:#606066;backdrop-filter:blur(15px);
+}
+.hero-kicker i{width:7px;height:7px;border-radius:50%;background:#20b45e;box-shadow:0 0 0 5px rgba(32,180,94,.12);animation:heroPulse 2s infinite}
+.hero h1{
+  font-size:clamp(64px,7vw,100px);line-height:.87;letter-spacing:-.075em;
+  margin:25px 0 20px;font-weight:720;
+}
+.hero-title{
+  font-size:clamp(24px,3vw,36px);font-weight:600;letter-spacing:-.045em;
+  color:#424245;min-height:43px;
+}
+.hero-title .cursor{border-right:2px solid var(--blue);margin-left:4px;animation:blink .8s infinite}
+.hero-description{font-size:18px;color:var(--muted);line-height:1.55;max-width:550px;margin:22px 0 0}
+.hero-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.hero-pill{font-size:11px;padding:7px 10px;border-radius:99px;background:rgba(0,113,227,.07);color:#245aa5;border:1px solid rgba(0,113,227,.08)}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+
+/* command center */
+.hero-command{
+  position:relative;min-height:475px;border-radius:32px;padding:13px;
+  background:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 35px 90px rgba(0,0,0,.13),inset 0 1px rgba(255,255,255,.95);
+  backdrop-filter:blur(25px) saturate(150%);
+  transform:perspective(1100px) rotateY(-3deg);
+  transition:transform .2s ease;
+}
+.command-window{
+  height:100%;min-height:449px;border-radius:23px;overflow:hidden;
+  background:rgba(247,247,249,.9);border:1px solid rgba(0,0,0,.08);
+}
+.command-bar{height:43px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid rgba(0,0,0,.08);font-size:10px;color:#777}
+.command-dots{display:flex;gap:5px}.command-dots i{width:7px;height:7px;border-radius:50%;background:#d1d1d5}
+.command-status{display:flex;gap:7px;align-items:center}.command-status i{width:6px;height:6px;border-radius:50%;background:#24b76b}
+.command-content{padding:24px}
+.command-heading{display:flex;justify-content:space-between;align-items:flex-start}
+.command-heading small{font-size:10px;color:#8a8a90;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.command-heading h3{font-size:25px;letter-spacing:-.04em;margin:5px 0 0}
+.command-time{font-family:monospace;font-size:10px;color:#888}
+.health{
+  margin-top:20px;padding:17px;border-radius:18px;background:#fff;border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 24px rgba(0,0,0,.04);
+}
+.health-row{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.health-row strong{font-size:17px}.health-row span{color:#20a65a;font-weight:700}
+.health-line{height:5px;border-radius:99px;background:#eee;margin-top:12px;overflow:hidden}
+.health-line i{display:block;width:91%;height:100%;border-radius:99px;background:linear-gradient(90deg,#0071e3,#5ac8fa);animation:health 3s ease-in-out infinite}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}
+.metric{padding:14px;border-radius:16px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.055)}
+.metric b{display:block;font-size:18px;letter-spacing:-.04em}.metric span{display:block;font-size:9px;color:#888;margin-top:3px}
+.checklist{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.check{
+  display:flex;align-items:center;gap:9px;padding:13px;border-radius:15px;background:#fff;
+  border:1px solid rgba(0,0,0,.055);font-size:11px;font-weight:600;
+}
+.check i{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(36,183,107,.11);color:#20a65a;font-style:normal}
+.ticket-bar{
+  margin-top:10px;padding:13px 15px;border-radius:15px;background:#151516;color:#fff;
+  display:flex;justify-content:space-between;align-items:center;font-size:11px;
+}
+.ticket-bar span{color:#72d49b}.ticket-bar b{font-size:10px;padding:4px 8px;border-radius:99px;background:rgba(48,209,88,.13);color:#68d391}
+.float-chip{
+  position:absolute;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.8);
+  border:1px solid rgba(255,255,255,.95);box-shadow:0 15px 30px rgba(0,0,0,.09);
+  backdrop-filter:blur(16px);font-size:10px;font-weight:700;animation:floatChip 5s ease-in-out infinite;
+}
+.float-chip span{display:block;color:#999;font-size:8px;font-weight:500;margin-top:2px}
+.fc1{left:-34px;top:21%}.fc2{right:-29px;bottom:22%;animation-delay:-2s}.fc3{left:18%;bottom:-17px;animation-delay:-3.2s}
+@keyframes heroOrb{50%{transform:scale(1.12) translate(-25px,20px)}}@keyframes heroPulse{50%{opacity:.35;transform:scale(.7)}}@keyframes blink{50%{opacity:0}}
+@keyframes health{0%,100%{width:72%}50%{width:94%}}@keyframes floatChip{50%{transform:translateY(-8px)}}
+@media(max-width:900px){
+ .hero{padding:65px 0}.hero-grid{grid-template-columns:1fr;gap:50px}.hero-copy{max-width:760px;text-align:center;margin:auto}
+ .hero-description{margin-left:auto;margin-right:auto}.hero-pills,.hero-actions{justify-content:center}
+ .hero-command{transform:none;min-height:430px}.command-window{min-height:404px}.fc1,.fc2,.fc3{display:none}
+}
+@media(max-width:560px){
+ .hero{padding:50px 0}.hero-grid{width:min(100% - 28px,1160px)}.hero h1{font-size:clamp(58px,19vw,86px)}
+ .hero-description{font-size:16px}.hero-command{padding:8px;border-radius:25px}.command-content{padding:17px}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{display:none}
+ .checklist{grid-template-columns:1fr}.command-time{display:none}
+}
+
+@media(max-width:800px){
+ nav{display:none}.container{width:min(100% - 28px,1120px)}
+ .hero{padding:90px 0;min-height:calc(100vh - 52px)}.hero-name{font-size:clamp(64px,20vw,105px)}.hero-meta{font-size:14px}
+ .profile-card{margin-top:50px;padding:25px}.info{display:grid;gap:9px}
+ .about-grid,.project-grid,.skills{grid-template-columns:1fr}
+ section{padding:75px 0}.support,.contact{padding:32px 22px;border-radius:25px}
+ .steps{grid-template-columns:1fr}
+}
+
+/* ===== SEAMLESS HEADER / HERO TRANSITION ===== */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding-top:12px;
+  background:linear-gradient(
+    180deg,
+    rgba(247,248,252,.92) 0%,
+    rgba(247,248,252,.62) 55%,
+    rgba(247,248,252,0) 100%
+  );
+  border:0 !important;
+  box-shadow:none !important;
+}
+header .container{
+  width:min(1160px,calc(100% - 32px));
+}
+.nav{
+  height:56px;
+  background:rgba(255,255,255,.56);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:0 10px 30px rgba(0,0,0,.045),inset 0 1px rgba(255,255,255,.9);
+  backdrop-filter:blur(20px) saturate(145%);
+  -webkit-backdrop-filter:blur(20px) saturate(145%);
+}
+.nav.scrolled{
+  background:rgba(255,255,255,.70);
+  box-shadow:0 12px 34px rgba(0,0,0,.065),inset 0 1px rgba(255,255,255,.95);
+  transform:none;
+}
+
+/* Prevent the original navigation styling from leaking into the new nav. */
+header nav{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  font-size:12px;
+  color:#66666b;
+}
+header nav a{
+  display:inline-flex;
+  position:relative;
+  padding:8px 11px;
+  border-radius:10px;
+  background:transparent;
+  color:#66666b;
+  border:0;
+  box-shadow:none;
+  text-decoration:none;
+}
+header nav a:hover,
+header nav a.active{
+  color:#1d1d1f;
+  background:rgba(0,0,0,.045);
+}
+
+/* Hide any legacy nav text that may have been left outside the header nav. */
+header + main{margin-top:0}
+
+/* Hero begins underneath the transparent header. */
+.hero{
+  padding-top:112px;
+  margin-top:0;
+  border-top:0 !important;
+}
+
+/* Remove any visual seam immediately under the header. */
+.hero::before{z-index:0}
+.hero::after{z-index:0}
+
+/* Make the first hero background continuous with the page/header atmosphere. */
+body{
+  background:#f7f8fc;
+}
+body:before{
+  background:
+    radial-gradient(circle at 78% 8%,rgba(120,170,255,.16),transparent 30%),
+    radial-gradient(circle at 20% 16%,rgba(190,140,255,.10),transparent 27%),
+    linear-gradient(180deg,#f7f8fc 0%,#f5f5f7 46%,#f1f1f3 100%);
+}
+
+/* On scroll, keep the header visually attached rather than becoming a bar. */
+@media(max-width:900px){
+  header{padding-top:8px}
+  header .container{width:min(100% - 20px,1160px)}
+  .hero{padding-top:85px}
+}
+
+
+/* Header cleanup: one desktop navigation only */
+header nav{
+  display:flex !important;
+  align-items:center;
+  gap:3px;
+}
+header nav a{
+  display:inline-flex !important;
+  visibility:visible !important;
+}
+
+
+/* ===== EXPERIENCE REVEAL + TRANSLUCENT SKILL HOVER ===== */
+#experience .timeline .job{
+  opacity:0;
+  transform:translateY(42px);
+  transition:opacity .75s cubic-bezier(.22,1,.36,1),
+             transform .75s cubic-bezier(.22,1,.36,1);
+}
+#experience .timeline .job.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+#experience .timeline .job ul li{
+  opacity:0;
+  transform:translateX(-18px);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1);
+}
+#experience .timeline .job.is-visible ul li{
+  opacity:1;
+  transform:translateX(0);
+}
+#experience .timeline .job.is-visible ul li:nth-child(1){transition-delay:.12s}
+#experience .timeline .job.is-visible ul li:nth-child(2){transition-delay:.22s}
+#experience .timeline .job.is-visible ul li:nth-child(3){transition-delay:.32s}
+#experience .timeline .job.is-visible ul li:nth-child(4){transition-delay:.42s}
+#experience .timeline .job.is-visible ul li:nth-child(5){transition-delay:.52s}
+
+#skills .skill{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+  background:rgba(255,255,255,.42);
+  border:1px solid rgba(255,255,255,.72);
+}
+#skills .skill::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:170px;height:170px;
+  left:var(--mx,50%);
+  top:var(--my,50%);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.75) 0%,rgba(130,190,255,.20) 30%,transparent 70%);
+  opacity:0;
+  transition:opacity .35s ease;
+  pointer-events:none;
+}
+#skills .skill::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,.06));
+  opacity:0;
+  transition:opacity .35s ease;
+  pointer-events:none;
+}
+#skills .skill:hover{
+  transform:translateY(-7px) scale(1.015);
+  background:rgba(255,255,255,.20);
+  border-color:rgba(255,255,255,.95);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.09),
+    inset 0 1px rgba(255,255,255,.95),
+    inset 0 -1px rgba(255,255,255,.25);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+}
+#skills .skill:hover::before,
+#skills .skill:hover::after{opacity:1}
+#skills .skill strong,
+#skills .skill span{
+  position:relative;
+  z-index:2;
+}
+#skills .skill span{transition:color .3s ease}
+#skills .skill:hover span{color:#4d5968}
+
+@media(prefers-reduced-motion:reduce){
+  #experience .timeline .job,
+  #experience .timeline .job ul li,
+  #skills .skill{transition:none!important}
+  #experience .timeline .job,
+  #experience .timeline .job ul li{opacity:1;transform:none}
+}
+
+
+/* =========================================================
+   APPLE-INSPIRED GLASSMORPHISM LAYER
+   Visual-only enhancement: content, links and interactions preserved.
+   ========================================================= */
+
+:root{
+  --glass-white:rgba(255,255,255,.54);
+  --glass-white-strong:rgba(255,255,255,.70);
+  --glass-line:rgba(255,255,255,.72);
+  --glass-shadow:0 24px 70px rgba(0,0,0,.075);
+  --glass-blur:28px;
+}
+
+/* Richer Apple-like atmospheric background */
+body{
+  background:
+    radial-gradient(circle at 12% 12%,rgba(120,170,255,.16),transparent 27%),
+    radial-gradient(circle at 88% 14%,rgba(205,160,255,.13),transparent 25%),
+    radial-gradient(circle at 72% 72%,rgba(100,190,255,.09),transparent 28%),
+    linear-gradient(180deg,#f8f9fc 0%,#f5f5f7 48%,#f0f1f4 100%);
+}
+
+body:before{
+  background:
+    radial-gradient(circle at 18% 32%,rgba(255,255,255,.75),transparent 25%),
+    radial-gradient(circle at 82% 42%,rgba(160,205,255,.10),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.18),transparent 65%);
+}
+
+/* Subtle floating light sources */
+body:after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.55),transparent 18%),
+    radial-gradient(circle at 75% 65%,rgba(130,185,255,.08),transparent 20%);
+  filter:blur(45px);
+  animation:glassAtmosphere 14s ease-in-out infinite alternate;
+}
+
+@keyframes glassAtmosphere{
+  from{transform:translate3d(-1%,0,0) scale(1)}
+  to{transform:translate3d(1%,1%,0) scale(1.04)}
+}
+
+/* Header becomes a floating glass capsule */
+header{
+  background:linear-gradient(180deg,rgba(248,249,252,.76),rgba(248,249,252,.10)) !important;
+}
+
+.nav{
+  background:rgba(255,255,255,.48) !important;
+  border:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.075),
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.20) !important;
+  backdrop-filter:saturate(180%) blur(30px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(30px) !important;
+}
+
+.nav.scrolled{
+  background:rgba(255,255,255,.62) !important;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.09),
+    inset 0 1px rgba(255,255,255,.98) !important;
+}
+
+/* Glass navigation pills */
+header nav a{
+  background:transparent !important;
+  transition:all .25s cubic-bezier(.22,1,.36,1) !important;
+}
+
+header nav a:hover,
+header nav a.active{
+  background:rgba(255,255,255,.58) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.95),
+    0 5px 18px rgba(0,0,0,.045);
+  backdrop-filter:blur(14px);
+}
+
+/* Availability capsule */
+.header-availability{
+  background:rgba(255,255,255,.46) !important;
+  border:1px solid rgba(36,183,107,.18) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.85),
+    0 7px 22px rgba(0,0,0,.035);
+  backdrop-filter:blur(16px);
+}
+
+/* Apple-like dark glass CTA */
+.header-cta{
+  background:rgba(29,29,31,.90) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.18),
+    0 8px 24px rgba(0,0,0,.15) !important;
+}
+
+/* Hero atmospheric glow */
+.hero::before{
+  width:1050px !important;
+  height:1050px !important;
+  background:
+    radial-gradient(circle,
+      rgba(0,113,227,.18) 0%,
+      rgba(100,170,255,.10) 28%,
+      transparent 64%) !important;
+  filter:blur(3px);
+}
+
+/* Glass kicker */
+.hero-kicker{
+  background:rgba(255,255,255,.48) !important;
+  border:1px solid rgba(255,255,255,.82) !important;
+  box-shadow:
+    0 14px 35px rgba(0,0,0,.055),
+    inset 0 1px rgba(255,255,255,.95) !important;
+  backdrop-filter:blur(24px) saturate(170%) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(170%) !important;
+}
+
+/* Softer glass pills */
+.hero-pill{
+  background:rgba(255,255,255,.38) !important;
+  border:1px solid rgba(255,255,255,.68) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.85),
+    0 5px 16px rgba(0,0,0,.025);
+  backdrop-filter:blur(15px);
+}
+
+/* Buttons: translucent glass rather than generic cards */
+.btn{
+  background:rgba(255,255,255,.43) !important;
+  border:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.92),
+    0 10px 30px rgba(0,0,0,.055) !important;
+  backdrop-filter:blur(22px) saturate(150%) !important;
+  -webkit-backdrop-filter:blur(22px) saturate(150%) !important;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,.62) !important;
+  transform:translateY(-3px) scale(1.01);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.98),
+    0 16px 38px rgba(0,0,0,.085) !important;
+}
+
+.btn.primary{
+  background:rgba(0,113,227,.86) !important;
+  border-color:rgba(255,255,255,.34) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.34),
+    0 12px 32px rgba(0,113,227,.20) !important;
+}
+
+/* Main command-center glass */
+.hero-command{
+  background:rgba(255,255,255,.30) !important;
+  border:1px solid rgba(255,255,255,.82) !important;
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.12),
+    inset 0 1px rgba(255,255,255,.98),
+    inset 0 -1px rgba(255,255,255,.18) !important;
+  backdrop-filter:blur(34px) saturate(165%) !important;
+  -webkit-backdrop-filter:blur(34px) saturate(165%) !important;
+}
+
+.command-window{
+  background:rgba(248,248,250,.68) !important;
+  border:1px solid rgba(255,255,255,.75) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.92),
+    0 10px 35px rgba(0,0,0,.035);
+  backdrop-filter:blur(18px);
+}
+
+.health,
+.metric,
+.check{
+  background:rgba(255,255,255,.50) !important;
+  border:1px solid rgba(255,255,255,.72) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.92),
+    0 8px 24px rgba(0,0,0,.035) !important;
+  backdrop-filter:blur(18px);
+}
+
+.ticket-bar{
+  background:rgba(20,20,22,.78) !important;
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+}
+
+/* Floating chips get the same liquid-glass treatment */
+.float-chip{
+  background:rgba(255,255,255,.52) !important;
+  border:1px solid rgba(255,255,255,.82) !important;
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.085),
+    inset 0 1px rgba(255,255,255,.95) !important;
+  backdrop-filter:blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter:blur(24px) saturate(160%) !important;
+}
+
+/* All light cards become layered translucent surfaces */
+.card,
+.skill{
+  background:rgba(255,255,255,.43) !important;
+  border:1px solid rgba(255,255,255,.78) !important;
+  box-shadow:
+    0 16px 48px rgba(0,0,0,.055),
+    inset 0 1px rgba(255,255,255,.94) !important;
+  backdrop-filter:blur(25px) saturate(145%) !important;
+  -webkit-backdrop-filter:blur(25px) saturate(145%) !important;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.53) !important;
+  box-shadow:
+    0 24px 58px rgba(0,0,0,.075),
+    inset 0 1px rgba(255,255,255,.98) !important;
+  transition:all .35s cubic-bezier(.22,1,.36,1);
+}
+
+/* Skills retain your cursor-reactive effect, but with glass depth */
+#skills .skill{
+  background:rgba(255,255,255,.36) !important;
+}
+
+#skills .skill:hover{
+  background:rgba(255,255,255,.24) !important;
+  backdrop-filter:blur(30px) saturate(175%) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(175%) !important;
+}
+
+/* Support section: dark translucent glass */
+.support{
+  background:
+    linear-gradient(135deg,rgba(18,18,20,.92),rgba(35,35,39,.78)) !important;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 35px 95px rgba(0,0,0,.17),
+    inset 0 1px rgba(255,255,255,.10) !important;
+  backdrop-filter:blur(30px) saturate(135%) !important;
+  -webkit-backdrop-filter:blur(30px) saturate(135%) !important;
+}
+
+.ticket{
+  background:rgba(255,255,255,.075) !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.10),
+    0 18px 45px rgba(0,0,0,.12);
+  backdrop-filter:blur(22px);
+}
+
+.step{
+  background:rgba(255,255,255,.065) !important;
+  border:1px solid rgba(255,255,255,.11) !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.08);
+}
+
+/* Blue contact panel becomes luminous glass */
+.contact{
+  background:
+    radial-gradient(circle at 80% 10%,rgba(255,255,255,.16),transparent 30%),
+    linear-gradient(135deg,rgba(0,113,227,.90),rgba(20,124,229,.78)) !important;
+  border:1px solid rgba(255,255,255,.30);
+  box-shadow:
+    0 35px 90px rgba(0,113,227,.20),
+    inset 0 1px rgba(255,255,255,.32) !important;
+  backdrop-filter:blur(28px) saturate(150%);
+  -webkit-backdrop-filter:blur(28px) saturate(150%);
+}
+
+.contact-links a{
+  background:rgba(255,255,255,.12) !important;
+  border:1px solid rgba(255,255,255,.30) !important;
+  box-shadow:inset 0 1px rgba(255,255,255,.20);
+  backdrop-filter:blur(18px);
+  transition:all .25s ease;
+}
+
+.contact-links a:hover{
+  background:rgba(255,255,255,.22) !important;
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.30),
+    0 10px 25px rgba(0,0,0,.10);
+}
+
+/* Mobile glass menu */
+@media(max-width:900px){
+  .mobile-nav{
+    background:rgba(255,255,255,.68) !important;
+    border:1px solid rgba(255,255,255,.84) !important;
+    box-shadow:
+      0 25px 55px rgba(0,0,0,.11),
+      inset 0 1px rgba(255,255,255,.95) !important;
+    backdrop-filter:blur(30px) saturate(160%) !important;
+    -webkit-backdrop-filter:blur(30px) saturate(160%) !important;
+  }
+
+  .mobile-nav a:hover{
+    background:rgba(255,255,255,.58) !important;
+    box-shadow:inset 0 1px rgba(255,255,255,.9);
+  }
+
+  .mobile-menu{
+    background:rgba(255,255,255,.48) !important;
+    border:1px solid rgba(255,255,255,.68);
+    box-shadow:
+      inset 0 1px rgba(255,255,255,.9),
+      0 6px 18px rgba(0,0,0,.045);
+    backdrop-filter:blur(18px);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media(prefers-reduced-motion:reduce){
+  body:after{animation:none}
+}
+
+
+/* ===== Compact Apple-style header refinement ===== */
+.nav{
+  width:fit-content;
+  min-width:min(100%, 720px);
+  margin-left:auto;
+  margin-right:auto;
+  padding:0 8px 0 14px !important;
+}
+
+header nav{
+  gap:5px !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+}
+
+header nav a{
+  padding:8px 12px !important;
+  font-weight:600 !important;
+  letter-spacing:-.01em;
+}
+
+.logo{
+  font-size:16px !important;
+  font-weight:700 !important;
+}
+
+.logo-mark{
+  font-weight:800 !important;
+}
+
+.header-cta{
+  margin-left:5px !important;
+  padding:9px 13px !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+
+/* Keep the compact capsule full-width only on small screens. */
+@media(max-width:900px){
+  .nav{
+    width:auto;
+    min-width:0;
+    padding:0 7px 0 11px !important;
+  }
+
+  header nav{
+    font-size:13px !important;
+  }
+}
+
+
+/* =========================================================
+   MICRO-INTERACTION SYSTEM
+   Subtle Apple-inspired motion across the entire page.
+   ========================================================= */
+
+/* Smooth global interaction timing */
+a, button, .card, .skill, .btn, .project, .contact-links a,
+.header-cta, .hero-kicker, .hero-pill, .float-chip, .metric, .check,
+.step{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Section entrance states */
+main > section .section-head,
+main > section .card,
+main > section .skill,
+main > section .job,
+main > section .support,
+main > section .contact{
+  will-change:transform,opacity;
+}
+
+.reveal-item{
+  opacity:0;
+  transform:translateY(24px) scale(.985);
+  transition:
+    opacity .7s cubic-bezier(.22,1,.36,1),
+    transform .7s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal-item.is-revealed{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* Nav links glide into their active state */
+header nav a{
+  transition:
+    color .22s ease,
+    background .22s ease,
+    transform .22s cubic-bezier(.22,1,.36,1),
+    box-shadow .22s ease !important;
+}
+
+header nav a:hover{
+  transform:translateY(-1px);
+}
+
+header nav a:active{
+  transform:scale(.95);
+}
+
+/* Buttons have tactile press feedback */
+.btn,
+.header-cta,
+.contact-links a{
+  transition:
+    transform .25s cubic-bezier(.22,1,.36,1),
+    box-shadow .25s ease,
+    background .25s ease,
+    border-color .25s ease !important;
+}
+
+.btn:active,
+.header-cta:active,
+.contact-links a:active{
+  transform:translateY(1px) scale(.96) !important;
+}
+
+/* Cards get subtle cursor-aware highlight */
+.card,
+.skill{
+  --card-x:50%;
+  --card-y:50%;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before,
+.skill::before{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  left:var(--card-x);
+  top:var(--card-y);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(255,255,255,.42) 0%,
+    rgba(150,205,255,.10) 34%,
+    transparent 70%
+  );
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:0;
+}
+
+.card:hover::before,
+.skill:hover::before{
+  opacity:1;
+}
+
+.card > *,
+.skill > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Project cards feel clickable */
+.project{
+  cursor:default;
+}
+
+.project h3{
+  transition:
+    transform .3s cubic-bezier(.22,1,.36,1),
+    color .25s ease;
+}
+
+.project:hover h3{
+  transform:translateX(3px);
+}
+
+/* Chips gently respond to hover */
+.chip,
+.hero-pill{
+  transition:
+    transform .22s cubic-bezier(.22,1,.36,1),
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.chip:hover,
+.hero-pill:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.58) !important;
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.9),
+    0 6px 16px rgba(0,0,0,.045);
+}
+
+/* Skills get a slightly deeper lift */
+#skills .skill:hover{
+  transform:translateY(-8px) scale(1.018) !important;
+}
+
+/* Timeline dot reacts when its job becomes visible */
+#experience .job:before{
+  transition:
+    transform .5s cubic-bezier(.22,1,.36,1),
+    box-shadow .5s ease;
+}
+
+#experience .job.is-visible:before{
+  transform:scale(1.18);
+  box-shadow:
+    0 0 0 6px #f5f5f7,
+    0 0 0 10px rgba(0,113,227,.08);
+}
+
+/* Support steps */
+.step{
+  transition:
+    transform .28s cubic-bezier(.22,1,.36,1),
+    background .28s ease,
+    border-color .28s ease;
+}
+
+.step:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.10) !important;
+  border-color:rgba(255,255,255,.20) !important;
+}
+
+/* Command-center metrics */
+.metric,
+.check,
+.health{
+  transition:
+    transform .28s cubic-bezier(.22,1,.36,1),
+    box-shadow .28s ease;
+}
+
+.metric:hover,
+.check:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.06),
+    inset 0 1px rgba(255,255,255,.95) !important;
+}
+
+/* Floating chips react when hovered */
+.float-chip{
+  transition:
+    transform .3s cubic-bezier(.22,1,.36,1),
+    box-shadow .3s ease;
+}
+
+.float-chip:hover{
+  transform:translateY(-8px) scale(1.035);
+  box-shadow:
+    0 22px 48px rgba(0,0,0,.12),
+    inset 0 1px rgba(255,255,255,.98) !important;
+}
+
+/* Contact links get a soft directional movement */
+.contact-links a:hover{
+  transform:translateY(-3px) scale(1.015) !important;
+}
+
+/* Logo tactile response */
+.logo{
+  transition:transform .25s cubic-bezier(.22,1,.36,1);
+}
+
+.logo:hover{
+  transform:translateY(-1px);
+}
+
+.logo-mark{
+  transition:
+    transform .3s cubic-bezier(.22,1,.36,1),
+    box-shadow .3s ease;
+}
+
+.logo:hover .logo-mark{
+  transform:rotate(-4deg) scale(1.06);
+  box-shadow:0 8px 20px rgba(0,0,0,.20);
+}
+
+/* Mobile menu button */
+.mobile-menu{
+  transition:
+    transform .2s cubic-bezier(.22,1,.36,1),
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.mobile-menu:active{
+  transform:scale(.91);
+}
+
+/* Scroll progress line */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:2px;
+  z-index:9999;
+  pointer-events:none;
+  transform-origin:left center;
+  transform:scaleX(0);
+  background:linear-gradient(90deg,#0071e3,#5ac8fa);
+  box-shadow:0 0 12px rgba(0,113,227,.35);
+}
+
+/* Cursor glow — only on precision-pointer devices */
+.cursor-glow{
+  position:fixed;
+  width:260px;
+  height:260px;
+  left:0;
+  top:0;
+  z-index:0;
+  pointer-events:none;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(100,170,255,.08) 0%,
+    rgba(255,255,255,.025) 35%,
+    transparent 70%
+  );
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity .3s ease;
+  mix-blend-mode:normal;
+}
+
+@media (pointer:fine){
+  body:has(.cursor-glow:hover) .cursor-glow{
+    opacity:1;
+  }
+}
+
+/* Reduce everything gracefully for accessibility */
+@media(prefers-reduced-motion:reduce){
+  .reveal-item,
+  .reveal-item.is-revealed{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+  .card,
+  .skill,
+  .btn,
+  .header-cta,
+  .contact-links a,
+  .float-chip,
+  .step,
+  .metric,
+  .check,
+  .logo,
+  .logo-mark{
+    transition:none !important;
+  }
+
+  .cursor-glow,
+  .scroll-progress{
+    display:none;
+  }
+}
+
+
+/* ===== Icon-only contact actions ===== */
+.contact-links{
+  gap:12px !important;
+}
+
+.contact-links .contact-icon{
+  width:48px;
+  height:48px;
+  padding:0 !important;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+}
+
+.contact-links .contact-icon svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transition:transform .25s cubic-bezier(.22,1,.36,1);
+}
+
+.contact-links .contact-icon:hover svg{
+  transform:scale(1.12);
+}
+
+/* LinkedIn/GitHub paths are filled, so don't apply stroke rendering */
+.contact-links .contact-icon:nth-child(3) svg,
+.contact-links .contact-icon:nth-child(4) svg{
+  fill:currentColor;
+  stroke:none;
+}
+
+@media(max-width:560px){
+  .contact-links .contact-icon{
+    width:44px;
+    height:44px;
+  }
+
+  .contact-links .contact-icon svg{
+    width:18px;
+    height:18px;
+  }
+}
+
+
+/* ===== Final compact header ===== */
+.nav{
+  min-width:0 !important;
+  width:fit-content !important;
+  max-width:calc(100% - 24px);
+  padding-left:11px !important;
+  padding-right:6px !important;
+  gap:2px;
+}
+
+header nav{
+  gap:1px !important;
+  font-size:12px !important;
+}
+
+header nav a{
+  padding:7px 9px !important;
+  font-size:12px !important;
+  font-weight:650 !important;
+}
+
+.logo{
+  font-size:15px !important;
+}
+
+.logo-copy small{
+  font-size:7px !important;
+}
+
+.logo-mark{
+  width:29px !important;
+  height:29px !important;
+}
+
+.header-cta{
+  margin-left:3px !important;
+  padding:8px 10px !important;
+  font-size:11px !important;
+}
+
+.header-cta svg{
+  width:11px !important;
+  height:11px !important;
+}
+
+@media(max-width:900px){
+  .nav{
+    width:calc(100% - 20px) !important;
+    max-width:none;
+  }
+}
+
+
+/* ===== Header navigation / CTA breathing room ===== */
+header nav{
+  margin-right:8px !important;
+}
+
+.header-cta{
+  margin-left:8px !important;
+}
+
+
+/* ===== Precise header spacing ===== */
+header .logo{
+  margin-right:32px !important;
+}
+
+header nav{
+  gap:8px !important;
+  margin-right:0 !important;
+}
+
+.header-cta{
+  margin-left:32px !important;
+}
+
+/* Keep the compact layout on smaller screens */
+@media(max-width:900px){
+  header .logo{
+    margin-right:0 !important;
+  }
+
+  header nav{
+    gap:0 !important;
+  }
+
+  .header-cta{
+    margin-left:auto !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav" id="mainNav">
+    <a class="logo" href="#top" aria-label="Subham Paswan home">
+      <span class="logo-mark">SP</span>
+      <span class="logo-copy">Subham Paswan<small>IT Support Portfolio</small></span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </nav>
+
+    <a class="header-cta" href="#contact">
+      Contact
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"
+              stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">
+      <span></span>
+    </button>
+
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-kicker"><i></i> DESKTOP SUPPORT · IT OPERATIONS</div>
+      <h1>Subham<br>Paswan</h1>
+      <div class="hero-title"><span id="heroType">Desktop Support Engineer</span><span class="cursor">&nbsp;</span></div>
+      <p class="hero-description">Reliable first-level support for <strong>Windows 10/11</strong>, Microsoft 365, user accounts, network connectivity, printers and everyday IT issues.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">Windows 10 / 11</span><span class="hero-pill">Microsoft 365</span>
+        <span class="hero-pill">TCP/IP · DNS · DHCP</span><span class="hero-pill">Hardware & Printers</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact">Let's connect</a>
+        <a class="btn" href="#experience">View experience</a>
+      </div>
+    </div>
+
+    <div class="hero-command" id="heroCommand">
+      <div class="command-window">
+        <div class="command-bar">
+          <div class="command-dots"><i></i><i></i><i></i></div>
+          <div>SUPPORT COMMAND CENTER / DESKTOP-01</div>
+          <div class="command-status"><i></i> ONLINE</div>
+        </div>
+        <div class="command-content">
+          <div class="command-heading">
+            <div><small>Workstation overview</small><h3>System health</h3></div>
+            <div class="command-time" id="heroClock">09:41:22 IST</div>
+          </div>
+          <div class="health">
+            <div class="health-row"><strong>Support readiness</strong><span>Healthy</span></div>
+            <div class="health-line"><i></i></div>
+          </div>
+          <div class="metrics">
+            <div class="metric"><b>24</b><span>Tickets handled</span></div>
+            <div class="metric"><b>99%</b><span>Connectivity checks</span></div>
+            <div class="metric"><b>SLA</b><span>Workflow focused</span></div>
+          </div>
+          <div class="checklist">
+            <div class="check"><i>✓</i> Windows diagnostics</div>
+            <div class="check"><i>✓</i> Microsoft 365</div>
+            <div class="check"><i>✓</i> Network troubleshooting</div>
+            <div class="check"><i>✓</i> User & account support</div>
+            <div class="check"><i>✓</i> Printer troubleshooting</div>
+            <div class="check"><i>✓</i> IT asset handling</div>
+          </div>
+          <div class="ticket-bar"><span>● Ticket #DS-104 · Network connectivity</span><b>RESOLVED</b></div>
+        </div>
+      </div>
+      <div class="float-chip fc1">● Network stable<span>DHCP · DNS · TCP/IP</span></div>
+      <div class="float-chip fc2">✓ SLA workflow<span>Issue documented</span></div>
+      <div class="float-chip fc3">▣ Asset support<span>Devices · Printers</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>About me</h2>
+      <p>Focused on practical support, accurate documentation and solving user problems with a structured approach.</p>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3>User & Office Support</h3>
+        <p>Experience handling applicant queries, procedural guidance, digital records and daily Microsoft Office workflows at LIC HFL.</p>
+      </div>
+      <div class="card">
+        <h3>Technical Foundation</h3>
+        <p>B.Tech IT background with knowledge of Windows environments, basic TCP/IP, DNS, DHCP, LAN/WAN concepts and software troubleshooting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <p>Professional experience emphasizing accuracy, user communication, documentation and structured support workflows.</p>
+    </div>
+    <div class="timeline">
+      <article class="job">
+        <h3>Assistant (Apprentice) — LIC HFL</h3>
+        <div class="meta">Operations & Office Support</div>
+        <ul>
+          <li>Processed and verified applicant documents for completeness, accuracy and procedural compliance.</li>
+          <li>Used Microsoft Excel, Word, PowerPoint and Mail Merge for daily operational and documentation tasks.</li>
+          <li>Supported applicants by explaining procedures, answering queries and communicating requirements clearly.</li>
+          <li>Managed scanned KYC documents, PDFs and digital files using document and image editing tools.</li>
+          <li>Maintained confidential digital records and completed workflow-driven tasks within defined timelines.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <h2>Technical skills</h2>
+      <p>A focused toolkit aligned with entry-level desktop and IT support requirements.</p>
+    </div>
+    <div class="skills">
+      <div class="skill"><strong>Operating Systems</strong><span>Windows 10 / 11</span></div>
+      <div class="skill"><strong>Microsoft Office</strong><span>Excel · Word · PowerPoint · Outlook · Mail Merge</span></div>
+      <div class="skill"><strong>Networking</strong><span>TCP/IP · DNS · DHCP · LAN/WAN — Basic</span></div>
+      <div class="skill"><strong>IT Support</strong><span>User assistance · Software troubleshooting · Account & access workflows</span></div>
+      <div class="skill"><strong>Documentation</strong><span>PDF management · Digital records · File organization</span></div>
+      <div class="skill"><strong>Technical Foundation</strong><span>Python · C++ · Database fundamentals</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="support">
+      <div class="eyebrow" style="color:#8faeff">Support approach</div>
+      <h2>Diagnose first. Fix systematically.</h2>
+      <p style="color:#aeb9c4;max-width:650px">
+        My approach to first-level support is to understand the user's issue,
+        isolate the cause, apply the least disruptive fix and document the outcome.
+      </p>
+      <div class="ticket">
+        <div class="ticket-top"><span>Example IT Support Ticket</span><span class="badge">Resolved</span></div>
+        <h3>One PC has no internet access</h3>
+        <p>Other users are connected. The affected PC shows a connectivity problem.</p>
+        <div class="steps">
+          <div class="step"><b>01 — Diagnose</b>Check IP configuration and connectivity.</div>
+          <div class="step"><b>02 — Isolate</b>Check DHCP lease, gateway and DNS.</div>
+          <div class="step"><b>03 — Resolve</b>Renew configuration, verify access and document.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p>Projects demonstrating structured user workflows, role-based access and data handling.</p>
+    </div>
+    <div class="project-grid">
+      <article class="card project">
+        <div class="tag">Education Platform</div>
+        <h3>School Management Portal</h3>
+        <p>Designed an interactive school management portal with Admin, Teacher and Parent dashboards, structured student records and enrollment workflows.</p>
+        <div class="chips"><span class="chip">Role-based access</span><span class="chip">Student records</span><span class="chip">Enrollment</span></div>
+      </article>
+      <article class="card project">
+        <div class="tag">Assessment Platform</div>
+        <h3>Quester</h3>
+        <p>Developed an online assessment platform with controlled user workflows, candidate information management and structured evaluation data.</p>
+        <div class="chips"><span class="chip">Access control</span><span class="chip">User workflows</span><span class="chip">Data handling</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-head">
+      <h2>Education</h2>
+      <p>Information Technology foundation supporting a transition into professional IT support.</p>
+    </div>
+    <div class="card">
+      <h3>Bachelor of Technology — Information Technology</h3>
+      <p>Birsa Institute of Technology (BIT Sindri), Dhanbad · 2022–2026</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact">
+      <div class="eyebrow" style="color:#dce5ff">Contact</div>
+      <h2>Looking for an entry-level IT support opportunity.</h2>
+      <p>Available for Desktop Support Engineer and IT Support roles where I can contribute through reliable user support, documentation and structured troubleshooting.</p>
+      <div class="contact-links">
+        <a class="contact-icon" href="mailto:subhampaswangrd@gmail.com" aria-label="Email Subham Paswan" title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3z"/><path d="m3.5 6 8.5 6 8.5-6"/></svg>
+        </a>
+        <a class="contact-icon" href="tel:7462006347" aria-label="Call Subham Paswan" title="Call">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 4.5 5.2c-.8.5-.9 1.6-.6 2.5 2 5.8 6.6 10.4 12.4 12.4.9.3 2 0 2.5-.8l1.7-2.7-4.1-2.5-1.9 1.9a15.5 15.5 0 0 1-4.9-4.9l1.9-1.9-2.3-4.1Z"/></svg>
+        </a>
+        <a class="contact-icon" href="https://www.linkedin.com/in/subhampas1" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8.5V19H2.8V8.5H6ZM4.4 3A1.9 1.9 0 1 1 4.4 6.8 1.9 1.9 0 0 1 4.4 3ZM8.4 8.5h3.1v1.4h.1c.4-.8 1.5-1.7 3.3-1.7 3.5 0 4.1 2.2 4.1 5.1V19h-3.2v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V19H8.9V8.5Z"/></svg>
+        </a>
+        <a class="contact-icon" href="https://github.com/subhampas1" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.7-1.3-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.4 9.4 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.5c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5Z" clip-rule="evenodd"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">© 2026 Subham Paswan · Desktop Support Engineer</div>
+</footer>
+<script>
+(()=>{const t=document.getElementById("heroType"),c=document.getElementById("heroClock"),box=document.getElementById("heroCommand");
+const roles=["Desktop Support Engineer","IT Support Specialist","Technical Support Engineer","End-User Support"];let r=0,i=roles[0].length,del=true;
+function type(){let x=roles[r];if(!del){i++;t.textContent=x.slice(0,i);if(i===x.length){del=true;return setTimeout(type,1500)}}else{i--;t.textContent=x.slice(0,i);if(i===0){del=false;r=(r+1)%roles.length}}setTimeout(type,del?38:65)}setTimeout(type,1800);
+setInterval(()=>c.textContent=new Date().toLocaleTimeString("en-IN",{hour12:false})+" IST",1000);
+if(matchMedia("(pointer:fine)").matches){document.addEventListener("pointermove",e=>{let q=box.getBoundingClientRect(),x=(e.clientX-q.left-q.width/2)/q.width,y=(e.clientY-q.top-q.height/2)/q.height;if(q.top<innerHeight&&q.bottom>0)box.style.transform=`perspective(1100px) rotateY(${(-3+x*4).toFixed(2)}deg) rotateX(${(-y*2).toFixed(2)}deg)`});box.onmouseleave=()=>box.style.transform="perspective(1100px) rotateY(-3deg)"}})();
+</script>
+
+<script>
+(() => {
+  const nav = document.getElementById("mainNav");
+  const links = [...document.querySelectorAll('nav a')];
+  const sections = ["about","experience","skills","projects","contact"]
+    .map(id => document.getElementById(id)).filter(Boolean);
+  const mobile = document.getElementById("mobileMenu");
+  const mobileNav = document.getElementById("mobileNav");
+
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 24);
+
+    let current = "";
+    sections.forEach(section => {
+      if (window.scrollY + 160 >= section.offsetTop) current = section.id;
+    });
+    links.forEach(link => link.classList.toggle(
+      "active", link.getAttribute("href") === "#" + current
+    ));
+  }, {passive:true});
+
+  mobile?.addEventListener("click", () => mobileNav.classList.toggle("open"));
+  mobileNav?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    mobileNav.classList.remove("open");
+  }));
+})();
+</script>
+
+
+<script>
+(() => {
+  // Reveal the experience card and then its individual responsibilities
+  // as the section enters the viewport.
+  const experienceJob = document.querySelector("#experience .timeline .job");
+
+  if (experienceJob && "IntersectionObserver" in window) {
+    const experienceObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          experienceJob.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: "0px 0px -60px 0px" });
+
+    experienceObserver.observe(experienceJob);
+  } else if (experienceJob) {
+    experienceJob.classList.add("is-visible");
+  }
+
+  // Make the translucent skill cards respond to the cursor position.
+  document.querySelectorAll("#skills .skill").forEach(card => {
+    card.addEventListener("pointermove", event => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    });
+  });
+})();
+</script>
+
+
+<script>
+/* ===== PAGE-WIDE MICRO INTERACTIONS ===== */
+(() => {
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Scroll progress */
+  const progress = document.createElement("div");
+  progress.className = "scroll-progress";
+  document.body.appendChild(progress);
+
+  const updateProgress = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+  };
+
+  addEventListener("scroll", updateProgress, {passive:true});
+  updateProgress();
+
+  /* Reveal sections/cards as they enter the viewport */
+  const revealTargets = document.querySelectorAll(
+    "main > section .section-head, " +
+    "main > section .card, " +
+    "main > section .skill, " +
+    "main > section .support, " +
+    "main > section .contact"
+  );
+
+  revealTargets.forEach((el, index) => {
+    el.classList.add("reveal-item");
+    el.style.transitionDelay = `${Math.min((index % 4) * 70, 210)}ms`;
+  });
+
+  if (!reduced && "IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -45px 0px"});
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add("is-revealed"));
+  }
+
+  /* Cursor-following glass highlight */
+  document.querySelectorAll(".card, .skill").forEach(card => {
+    card.addEventListener("pointermove", event => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--card-x", `${event.clientX - r.left}px`);
+      card.style.setProperty("--card-y", `${event.clientY - r.top}px`);
+    });
+  });
+
+  /* Precision-pointer ambient glow */
+  if (!reduced && matchMedia("(pointer:fine)").matches) {
+    const glow = document.createElement("div");
+    glow.className = "cursor-glow";
+    document.body.appendChild(glow);
+
+    let gx = innerWidth / 2;
+    let gy = innerHeight / 2;
+    let tx = gx;
+    let ty = gy;
+
+    addEventListener("pointermove", e => {
+      tx = e.clientX;
+      ty = e.clientY;
+      glow.style.opacity = "1";
+    }, {passive:true});
+
+    addEventListener("pointerleave", () => {
+      glow.style.opacity = "0";
+    });
+
+    const animateGlow = () => {
+      gx += (tx - gx) * .12;
+      gy += (ty - gy) * .12;
+      glow.style.left = `${gx}px`;
+      glow.style.top = `${gy}px`;
+      requestAnimationFrame(animateGlow);
+    };
+
+    animateGlow();
+  }
+
+  /* Gentle magnetic interaction for primary actions */
+  if (!reduced && matchMedia("(pointer:fine)").matches) {
+    document.querySelectorAll(".btn.primary, .header-cta").forEach(button => {
+      button.addEventListener("pointermove", event => {
+        const r = button.getBoundingClientRect();
+        const x = (event.clientX - r.left - r.width / 2) / r.width;
+        const y = (event.clientY - r.top - r.height / 2) / r.height;
+        button.style.transform =
+          `translate(${(x * 4).toFixed(1)}px, ${(y * 3).toFixed(1)}px)`;
+      });
+
+      button.addEventListener("pointerleave", () => {
+        button.style.transform = "";
+      });
+    });
+  }
+
+  /* Tiny 3D response for glass cards */
+  if (!reduced && matchMedia("(pointer:fine)").matches) {
+    document.querySelectorAll(".card.project").forEach(card => {
+      card.addEventListener("pointermove", event => {
+        const r = card.getBoundingClientRect();
+        const x = (event.clientX - r.left) / r.width - .5;
+        const y = (event.clientY - r.top) / r.height - .5;
+        card.style.transform =
+          `perspective(900px) rotateX(${(-y * 1.6).toFixed(2)}deg) rotateY(${(x * 1.8).toFixed(2)}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
